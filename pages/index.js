@@ -6,6 +6,7 @@ import QuizBackground from '../src/components/QuizBackground'
 import Footer from '../src/components/Footer'
 import GitHubCorner from '../src/components/GitHubCorner'
 import Head from 'next/head'
+import Credits from '../src/components/Credits'
 
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
@@ -52,8 +53,10 @@ export default function Home() {
           </Widget.Content>
         </Widget>
         <Footer />
+        <Credits />
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/VictorOda" />
+      
     </QuizBackground>
   );
 }
