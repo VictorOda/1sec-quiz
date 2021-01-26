@@ -6,6 +6,8 @@ import QuizBackground from '../src/components/QuizBackground'
 import Footer from '../src/components/Footer'
 import GitHubCorner from '../src/components/GitHubCorner'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
@@ -26,6 +28,9 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const router = useRouter();
+  const name = router.query.name;
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
@@ -40,7 +45,7 @@ export default function Home() {
             <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
-            <p>Vamos começar!</p>
+            <p>Vamos começar {name} !</p>
           </Widget.Content>
         </Widget>
         <Footer />

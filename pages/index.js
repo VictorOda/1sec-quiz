@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useRouter, userRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import db from '../db.json';
 import Widget from '../src/components/Widget'
 import QuizLogo from '../src/components/QuizLogo'
@@ -27,6 +27,31 @@ export const QuizContainer = styled.div`
   }
 `;
 
+export const NameInput = styled.input`
+  width: 100%;
+  height: 40px;
+  margin: 20px 0px;
+  border-radius: ${db.theme.borderRadius};
+  background-color: ${db.theme.colors.mainBg};
+  border: 2px solid ${db.theme.colors.primary};
+  font-size: 16px;
+  padding: 0 0 0 10px;
+  color: white;
+  ::placeholder {
+    color: ${db.theme.colors.primary};
+  }
+`;
+
+export const QuizButton = styled.button`
+  background-color: ${db.theme.colors.secondary};
+  border: none;
+  border-radius: ${db.theme.borderRadius};
+  font-size: 20px;
+  width: 100%;
+  height: 40px;
+  color: ${db.theme.colors.contrastText};
+`;
+
 export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
@@ -46,20 +71,21 @@ export default function Home() {
             <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
+            {db.description}
             {/* <p>{db.description}</p> */}
             <form onSubmit={function (infosDoEvento) {
               infosDoEvento.preventDefault();
               router.push(`/quiz?name=${name}`);
               console.log('Fazendo uma submissão por meio do react');
             }}>
-              <input 
+              <NameInput 
                 onChange={function(infosDoEvento) {
                   setName(infosDoEvento.target.value);
                 }}
-                placeholder="Diz aí seu nome!" />
-              <button type="submit" disabled={name.length === 0}>
-                Jogar
-              </button>
+                placeholder="Diz aí seu nome para jogar :)" />
+              <QuizButton type="submit" disabled={name.length === 0}>
+                JOGAR
+              </QuizButton>
             </form>
           </Widget.Content>
         </Widget>
