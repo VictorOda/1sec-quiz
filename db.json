@@ -5,25 +5,16 @@
     "description": "Teste os seus conhecimentos sobre as músicas dos games",
     "questions": [
       {
-        "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-        "title": "Como fazer um seletor por id via CSS?",
-        "description": "Essa é pra aquecer",
-        "answer": 2,
+        "image": "https://media.giphy.com/media/JhfcFoCNTuIH6/source.gif",
+        "title": "Clássicos da Nintendo",
+        "description": "Uma fácil pra começar...",
+        "sound": "http://docs.google.com/uc?export=open&id=1f-iYZVSZJyieF-seFOwDLx7884qYBlWi",
+        "answer": 1,
         "alternatives": [
-          ".elemento",
-          "*elemento",
-          "#elemento",
-          "%elemento"
-        ]
-      },
-      {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-        "title": "Como fazer um background gradiente com css?",
-        "description": "Faz tempo em haha",
-        "answer": 0,
-        "alternatives": [
-           "background: linear-gradient(#e66465, #9198e5);",
-           "background: gradient(#e66465, #9198e5);"
+          "Legend of Zelda",
+          "Super Mario",
+          "Metroid Prime",
+          "Donkey Kong"
         ]
       }
     ],

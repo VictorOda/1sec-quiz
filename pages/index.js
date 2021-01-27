@@ -8,49 +8,9 @@ import Footer from '../src/components/Footer'
 import GitHubCorner from '../src/components/GitHubCorner'
 import Head from 'next/head'
 import Credits from '../src/components/Credits'
-
-// const BackgroundImage = styled.div`
-//   background-image: url(${db.bg});
-//   flex: 1;
-//   background-size: cover;
-//   background-position: center;
-// `;
-
-export const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding: 15px;
-  }
-`;
-
-export const NameInput = styled.input`
-  width: 100%;
-  height: 40px;
-  margin: 20px 0px;
-  border-radius: ${db.theme.borderRadius};
-  background-color: ${db.theme.colors.mainBg};
-  border: 2px solid ${db.theme.colors.primary};
-  font-size: 16px;
-  padding: 0 0 0 10px;
-  color: white;
-  ::placeholder {
-    color: ${db.theme.colors.primary};
-  }
-`;
-
-export const QuizButton = styled.button`
-  background-color: ${db.theme.colors.secondary};
-  border: none;
-  border-radius: ${db.theme.borderRadius};
-  font-size: 20px;
-  width: 100%;
-  height: 40px;
-  color: ${db.theme.colors.contrastText};
-`;
+import Input from '../src/components/Input'
+import Button from '../src/components/Button'
+import QuizContainer from '../src/components/QuizContainer'
 
 export default function Home() {
   const router = useRouter();
@@ -78,14 +38,15 @@ export default function Home() {
               router.push(`/quiz?name=${name}`);
               console.log('Fazendo uma submissão por meio do react');
             }}>
-              <NameInput 
-                onChange={function(infosDoEvento) {
-                  setName(infosDoEvento.target.value);
-                }}
-                placeholder="Diz aí seu nome para jogar :)" />
-              <QuizButton type="submit" disabled={name.length === 0}>
+               <Input
+                name="nomeDoUsuario"
+                onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
+                placeholder="Diz aí seu nome pra jogar :)"
+                value={name}
+              />
+              <Button type="submit" disabled={name.length === 0}>
                 JOGAR
-              </QuizButton>
+              </Button>
             </form>
           </Widget.Content>
         </Widget>
