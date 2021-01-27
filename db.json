@@ -7,14 +7,113 @@
       {
         "image": "https://media.giphy.com/media/JhfcFoCNTuIH6/source.gif",
         "title": "Clássicos da Nintendo",
-        "description": "Uma fácil pra começar...",
-        "sound": "http://docs.google.com/uc?export=open&id=1f-iYZVSZJyieF-seFOwDLx7884qYBlWi",
+        "description": "Uma fácil pra começar",
+        "sound": "http://docs.google.com/uc?export=open&id=16U9pyi6GDk_xZSFf72HFDqnw4piV_QUB",
         "answer": 1,
         "alternatives": [
-          "Legend of Zelda",
+          "Donkey Kong",
           "Super Mario",
-          "Metroid Prime",
-          "Donkey Kong"
+          "Legend of Zelda",
+          "Kirby",
+          "Metroid Prime"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/ardMfW1w53UvC/giphy.gif",
+        "title": "Jogos das antigas",
+        "description": "",
+        "sound": "http://docs.google.com/uc?export=open&id=13qMtTlo_HkTkGC9e2c7oNWWJ169zVmwt",
+        "answer": 3,
+        "alternatives": [
+          "Pac-Man",
+          "Pitfall!",
+          "Missile Command",
+          "Tetris",
+          "Contra"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/MYBYe5q6kUPD2/source.gif",
+        "title": "Clássicos dos anos 90",
+        "description": "",
+        "sound": "http://docs.google.com/uc?export=open&id=16cQ1XwMIva-C2Xd8s9EzhBPkU8S05Tfc",
+        "answer": 4,
+        "alternatives": [
+          "Sonic",
+          "Mega Man",
+          "Final Fantasy",
+          "Crash Bandicoot",
+          "Pokémon"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/cWo5UdG06KCHe/giphy.gif",
+        "title": "Anos 2000",
+        "description": "",
+        "sound": "http://docs.google.com/uc?export=open&id=1Gz52T5YkfJm_xrQiP44A1QQaXPZ9_Jio",
+        "answer": 1,
+        "alternatives": [
+          "God of War",
+          "Grand Theft Auto",
+          "Halo",
+          "Prince of Persia",
+          "Fable"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/JqEB4KkitGwhPRtC7G/giphy.gif",
+        "title": "Jogos de luta",
+        "description": "",
+        "sound": "http://docs.google.com/uc?export=open&id=10kvtuvbIf7euqJuyWhi174qlUZW8LnDg",
+        "answer": 1,
+        "alternatives": [
+          "Street Fighter",
+          "Tekken",
+          "Super Smash Bros",
+          "Killer Instinct",
+          "Mortal Kombat"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/6Tol8FOHeuaFCHcgek/giphy.gif",
+        "title": "Jogos de estratégia",
+        "description": "",
+        "sound": "http://docs.google.com/uc?export=open&id=1fDS4f7RPbIgoxMUU3-uqvhGBxY3aj4dn",
+        "answer": 1,
+        "alternatives": [
+          "Starcraft",
+          "Warcraft",
+          "Age of Empires",
+          "Civilization",
+          "Command & Conquer"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/hqTguNdEoA1ooYxeog/giphy.gif",
+        "title": "Jogos Sériões",
+        "description": "",
+        "sound": "http://docs.google.com/uc?export=open&id=1VnUdzaC-qoiD-2oo1KHOQ9m1KOJnuyqN",
+        "answer": 1,
+        "alternatives": [
+          "Red Dead Redemption",
+          "The Last of Us",
+          "The Witcher",
+          "Dark Souls",
+          "Bioshock"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/26DoaWaPME4Mk0pXi/giphy.gif",
+        "title": "Jogos Indie",
+        "description": "",
+        "sound": "http://docs.google.com/uc?export=open&id=18AKZmHCjjhDQd705_EuNMVS38oqA7hiP",
+        "answer": 1,
+        "alternatives": [
+          "Bastion",
+          "Journey",
+          "Stardew Valley",
+          "Spelunky",
+          "Braid"
         ]
       }
     ],
