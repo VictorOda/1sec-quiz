@@ -55,7 +55,24 @@ export default function Home() {
           <Widget.Content>
             <h1>Quizes da Galera</h1>
 
-            <p>lorem ipsum dolor sit amet...</p>
+            <p>Mais quizes sobre games!</p>
+            <ul>
+              {db.external.map((url) => {
+                const prepareUrl = url
+                    .replace(/\//g, '')
+                    .replace('https:', '')
+                    .replace('.vercel.app', '');
+
+                const [repoName, user] = prepareUrl.split('.');
+                return (
+                  <li key={url}>
+                    <Widget.Topic href={url}>
+                      {`${user}/${repoName}`}
+                    </Widget.Topic>
+                  </li>
+                );
+              })}
+            </ul>
           </Widget.Content>
         </Widget>
         <Footer />

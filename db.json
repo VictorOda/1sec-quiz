@@ -2,7 +2,7 @@
 {
     "bg": "https://www.dailydot.com/wp-content/uploads/988/78/9c5f78d9f18315b6d576b21e0c774ee6.jpg",
     "title": "Quiz do 1 segundo GAMES",
-    "description": "Teste os seus conhecimentos sobre as músicas dos games",
+    "description": "Teste os seus conhecimentos sobre as músicas dos games ouvindo só 1 segundo delas!",
     "questions": [
       {
         "image": "https://media.giphy.com/media/JhfcFoCNTuIH6/source.gif",
@@ -118,7 +118,9 @@
       }
     ],
     "external": [
-      ""
+      "https://quiz-games.gabrielwolf-dev.vercel.app/",
+      "https://thelastofus-quiz.rhafaelcosta.vercel.app/",
+      "https://imersao-react-next-js.nathanaquino.vercel.app/"
     ],
     "theme": {
       "colors": {
