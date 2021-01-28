@@ -3,14 +3,15 @@ import db from '../db.json';
 import Widget from '../src/components/Widget'
 import QuizLogo from '../src/components/QuizLogo'
 import QuizBackground from '../src/components/QuizBackground'
-import GitHubCorner from '../src/components/GitHubCorner'
 import { useRouter } from 'next/router'
 import { Howl } from 'howler'
-import Credits from '../src/components/Credits'
 import QuizContainer from '../src/components/QuizContainer'
 import Button from '../src/components/Button'
+import PlayButton from '../src/components/PlayButton'
 import Head from 'next/head'
 import AlternativesForm from '../src/components/AlternativesForm'
+
+let audioClips = [];
 
 function ResultWidget({ results }) {
   const router = useRouter();
@@ -55,46 +56,14 @@ function QuestionWidget({
   questionIndex,
   totalQuestions,
   onSubmit,
-  addResult
+  addResult,
 }) {
   const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
   const [isQuestionSubmitted, setIsQuestionSubmitted] = React.useState();
   const questionId = `question__${questionIndex}`;
   const isCorrect = selectedAlternative === question.answer;
   const hasSelectedAlternative = selectedAlternative !== undefined;
-
-  let sound = new Howl({
-    src: question.sound,
-    html5: true,
-    volume: 0.5,
-    autoplay: false,
-    preload: true,
-    onend: () => {
-      isPlaying = false;
-    }
-  });
-  let isPlaying = false;
-  const SoundPlay = (src) => {
-    if (!isPlaying) {
-      sound = new Howl({
-        src,
-        html5: true,
-        volume: 0.5,
-        autoplay: false,
-        preload: true,
-        onend: () => {
-          isPlaying = false;
-        }
-      })
-      sound.play();
-      isPlaying = true;
-    }
-    else {
-      sound.stop();
-      isPlaying = false;
-    }
-  }
-
+ 
   return (
     <Widget>
       <Widget.Header>
@@ -120,7 +89,7 @@ function QuestionWidget({
         <p>
           {question.description}
         </p>
-        <Button type="button" onClick={() => SoundPlay(question.sound)}>Play</Button>
+        <PlayButton onClick={() => audioClips[questionIndex].play()}>Play</PlayButton>
         <AlternativesForm
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
@@ -130,7 +99,7 @@ function QuestionWidget({
               onSubmit();
               setIsQuestionSubmitted(false);
               setSelectedAlternative(undefined);
-            }, 3 * 1000);
+            }, 2 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
@@ -199,8 +168,21 @@ export default function QuizPage() {
   // morre === willUnmount
   React.useEffect(() => {
     // fetch() ...
+    // load audio clips
+    db.questions.forEach(question => {
+      audioClips = [
+        ...audioClips,
+        new Howl({
+          src: question.sound,
+          html5: true,
+          volume: 0.5,
+          autoplay: false,
+          preload: true,
+        })
+      ];
+    });
+    console.log(audioClips);
     setTimeout(() => {
-      // TODO: Load all of the audio files
       setScreenState(screenStates.QUIZ);
     }, 1 * 1000);
   // nasce === didMount
@@ -232,6 +214,7 @@ export default function QuizPage() {
             totalQuestions={totalQuestions}
             onSubmit={handleSubmitQuiz}
             addResult={addResult}
+            audioClips={audioClips}
           />
         )}
 
@@ -239,7 +222,6 @@ export default function QuizPage() {
 
         {screenState === screenStates.RESULT && <ResultWidget results={results} />}
       </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/VictorOda" />
     </QuizBackground>
   );
 }

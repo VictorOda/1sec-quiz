@@ -7,7 +7,7 @@
       {
         "image": "https://media.giphy.com/media/JhfcFoCNTuIH6/source.gif",
         "title": "Clássicos da Nintendo",
-        "description": "Uma fácil pra começar",
+        "description": "Uma mamão com açúcar pra gente começar",
         "sound": "http://docs.google.com/uc?export=open&id=16U9pyi6GDk_xZSFf72HFDqnw4piV_QUB",
         "answer": 1,
         "alternatives": [
@@ -20,8 +20,8 @@
       },
       {
         "image": "https://media.giphy.com/media/ardMfW1w53UvC/giphy.gif",
-        "title": "Jogos das antigas",
-        "description": "",
+        "title": "Das antigas",
+        "description": "Vai ver você nem tinha nascido ainda",
         "sound": "http://docs.google.com/uc?export=open&id=13qMtTlo_HkTkGC9e2c7oNWWJ169zVmwt",
         "answer": 3,
         "alternatives": [
@@ -35,7 +35,7 @@
       {
         "image": "https://media.giphy.com/media/MYBYe5q6kUPD2/source.gif",
         "title": "Clássicos dos anos 90",
-        "description": "",
+        "description": "Quem nunca alugou um desses jogos?",
         "sound": "http://docs.google.com/uc?export=open&id=16cQ1XwMIva-C2Xd8s9EzhBPkU8S05Tfc",
         "answer": 4,
         "alternatives": [
@@ -49,7 +49,7 @@
       {
         "image": "https://media.giphy.com/media/cWo5UdG06KCHe/giphy.gif",
         "title": "Anos 2000",
-        "description": "",
+        "description": "Muito cuidado para não virar um assassino jogando um desses jogos",
         "sound": "http://docs.google.com/uc?export=open&id=1Gz52T5YkfJm_xrQiP44A1QQaXPZ9_Jio",
         "answer": 2,
         "alternatives": [
@@ -63,7 +63,7 @@
       {
         "image": "https://media.giphy.com/media/JqEB4KkitGwhPRtC7G/giphy.gif",
         "title": "Jogos de luta",
-        "description": "",
+        "description": "Soquinho, soquinho, soquinho...",
         "sound": "http://docs.google.com/uc?export=open&id=10kvtuvbIf7euqJuyWhi174qlUZW8LnDg",
         "answer": 0,
         "alternatives": [
@@ -77,7 +77,7 @@
       {
         "image": "https://media.giphy.com/media/6Tol8FOHeuaFCHcgek/giphy.gif",
         "title": "Jogos de estratégia",
-        "description": "",
+        "description": "Conceito de estratégia. Em grego: strategia.",
         "sound": "http://docs.google.com/uc?export=open&id=1fDS4f7RPbIgoxMUU3-uqvhGBxY3aj4dn",
         "answer": 2,
         "alternatives": [
@@ -91,7 +91,7 @@
       {
         "image": "https://media.giphy.com/media/hqTguNdEoA1ooYxeog/giphy.gif",
         "title": "Jogos Sériões",
-        "description": "",
+        "description": "Pra quem se chama de gamer",
         "sound": "http://docs.google.com/uc?export=open&id=1VnUdzaC-qoiD-2oo1KHOQ9m1KOJnuyqN",
         "answer": 1,
         "alternatives": [
@@ -105,7 +105,7 @@
       {
         "image": "https://media.giphy.com/media/26DoaWaPME4Mk0pXi/giphy.gif",
         "title": "Jogos Indie",
-        "description": "",
+        "description": "Os hispsters do mundo dos games",
         "sound": "http://docs.google.com/uc?export=open&id=18AKZmHCjjhDQd705_EuNMVS38oqA7hiP",
         "answer": 4,
         "alternatives": [
