@@ -51,7 +51,7 @@
         "title": "Anos 2000",
         "description": "",
         "sound": "http://docs.google.com/uc?export=open&id=1Gz52T5YkfJm_xrQiP44A1QQaXPZ9_Jio",
-        "answer": 1,
+        "answer": 2,
         "alternatives": [
           "God of War",
           "Grand Theft Auto",
@@ -65,11 +65,11 @@
         "title": "Jogos de luta",
         "description": "",
         "sound": "http://docs.google.com/uc?export=open&id=10kvtuvbIf7euqJuyWhi174qlUZW8LnDg",
-        "answer": 1,
+        "answer": 0,
         "alternatives": [
+          "Super Smash Bros",
           "Street Fighter",
           "Tekken",
-          "Super Smash Bros",
           "Killer Instinct",
           "Mortal Kombat"
         ]
@@ -79,7 +79,7 @@
         "title": "Jogos de estratégia",
         "description": "",
         "sound": "http://docs.google.com/uc?export=open&id=1fDS4f7RPbIgoxMUU3-uqvhGBxY3aj4dn",
-        "answer": 1,
+        "answer": 2,
         "alternatives": [
           "Starcraft",
           "Warcraft",
@@ -107,13 +107,13 @@
         "title": "Jogos Indie",
         "description": "",
         "sound": "http://docs.google.com/uc?export=open&id=18AKZmHCjjhDQd705_EuNMVS38oqA7hiP",
-        "answer": 1,
+        "answer": 4,
         "alternatives": [
           "Bastion",
-          "Journey",
           "Stardew Valley",
           "Spelunky",
-          "Braid"
+          "Braid",
+          "Journey"
         ]
       }
     ],

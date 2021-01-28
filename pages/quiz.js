@@ -9,13 +9,32 @@ import { Howl } from 'howler'
 import Credits from '../src/components/Credits'
 import QuizContainer from '../src/components/QuizContainer'
 import Button from '../src/components/Button'
+import Head from 'next/head'
+import AlternativesForm from '../src/components/AlternativesForm'
 
+function ResultWidget({ results }) {
+  const router = useRouter();
+  const name = router.query.name;
 
-const audioClips = [
-  {sound: "https://ia903104.us.archive.org/25/items/smb1music/1%20-%20Running%20About.mp3", label: "Super Mario - Running About"},
-  {sound: "https://ia803104.us.archive.org/25/items/smb1music/11%20-%20Level%20Complete.mp3", label: "Super Mario - Level Complete"},
-  {sound: "http://docs.google.com/uc?export=open&id=1f-iYZVSZJyieF-seFOwDLx7884qYBlWi", label: "Google Drive"}
-]
+  return (
+    <Widget>
+      <Widget.Header>
+        RESULTADOS
+      </Widget.Header>
+
+      <Widget.Content>
+        <p>{name}, você acertou {results.reduce((somatoria, resultAtual) => {return resultAtual === true ? somatoria + 1 : somatoria}, 0)} músicas de {results.length}</p>
+        <ul>
+          {results.map((result, resultIndex) => (
+            <li key={`result__${resultIndex}`}>
+              #0{resultIndex+1} Resultado: {result == true ? 'ACERTOU' : 'ERROU'}
+            </li>
+          ))}
+        </ul>
+      </Widget.Content>
+    </Widget>
+  );
+}
 
 function LoadingWidget() {
   return (
@@ -36,8 +55,14 @@ function QuestionWidget({
   questionIndex,
   totalQuestions,
   onSubmit,
+  addResult
 }) {
+  const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
+  const [isQuestionSubmitted, setIsQuestionSubmitted] = React.useState();
   const questionId = `question__${questionIndex}`;
+  const isCorrect = selectedAlternative === question.answer;
+  const hasSelectedAlternative = selectedAlternative !== undefined;
+
   let sound = new Howl({
     src: question.sound,
     html5: true,
@@ -95,24 +120,36 @@ function QuestionWidget({
         <p>
           {question.description}
         </p>
-        <Button onClick={() => SoundPlay(question.sound)}>Play</Button>
-        <form
+        <Button type="button" onClick={() => SoundPlay(question.sound)}>Play</Button>
+        <AlternativesForm
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
-            onSubmit();
+            setIsQuestionSubmitted(true);
+            setTimeout(() => {
+              addResult(isCorrect);
+              onSubmit();
+              setIsQuestionSubmitted(false);
+              setSelectedAlternative(undefined);
+            }, 3 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeId = `alternative__${alternativeIndex}`;
+            const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
+            const isSelected = selectedAlternative === alternativeIndex;
             return (
               <Widget.Topic
                 as="label"
+                key={alternativeId}
                 htmlFor={alternativeId}
+                data-selected={isSelected}
+                data-status={isQuestionSubmitted && alternativeStatus}
               >
                 <input
-                  // style={{ display: 'none' }}
+                  style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
+                  onChange={() => setSelectedAlternative(alternativeIndex) }
                   type="radio"
                 />
                 {alternative}
@@ -123,10 +160,13 @@ function QuestionWidget({
           {/* <pre>
             {JSON.stringify(question, null, 4)}
           </pre> */}
-          <Button type="submit">
+          <Button type="submit" disabled={!hasSelectedAlternative}>
             Confirmar
           </Button>
-        </form>
+          {/* <p>selectedAlternative: {selectedAlternative}</p> */}
+          {isQuestionSubmitted && isCorrect && <p>Você acertou :)</p>}
+          {isQuestionSubmitted &&!isCorrect && <p>Você errou :(</p>}
+        </AlternativesForm>
       </Widget.Content>
     </Widget>
   );
@@ -140,10 +180,18 @@ const screenStates = {
 
 export default function QuizPage() {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
+  const [results, setResults] = React.useState([]);
   const totalQuestions = db.questions.length;
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
   const question = db.questions[questionIndex];
+
+  function addResult(result) {
+    setResults([
+      ...results,
+      result
+    ]);
+  }
 
   // [React chama de: Efeitos || Effects]
   // React.useEffect
@@ -152,6 +200,7 @@ export default function QuizPage() {
   React.useEffect(() => {
     // fetch() ...
     setTimeout(() => {
+      // TODO: Load all of the audio files
       setScreenState(screenStates.QUIZ);
     }, 1 * 1000);
   // nasce === didMount
@@ -165,12 +214,15 @@ export default function QuizPage() {
       setScreenState(screenStates.RESULT);
     }
   }
-  
-  const router = useRouter();
-  const name = router.query.name;
 
   return (
     <QuizBackground backgroundImage={db.bg}>
+      <Head>
+        <title>1sec Quiz - GAMES</title>
+        <meta property="og:title" content={db.title} />
+        <meta property="og:description" content={db.description} />
+        <meta property="og:image" content={db.bg} />
+      </Head>
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.QUIZ && (
@@ -179,13 +231,13 @@ export default function QuizPage() {
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
             onSubmit={handleSubmitQuiz}
+            addResult={addResult}
           />
         )}
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
-        {screenState === screenStates.RESULT && <div>{name}, você acertou X questões, parabéns!</div>}
-        <Credits />
+        {screenState === screenStates.RESULT && <ResultWidget results={results} />}
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/VictorOda" />
     </QuizBackground>
