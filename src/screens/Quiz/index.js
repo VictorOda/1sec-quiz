@@ -1,17 +1,12 @@
 import React from 'react'
-import db from '../db.json';
-import Widget from '../src/components/Widget'
-import QuizLogo from '../src/components/QuizLogo'
-import QuizBackground from '../src/components/QuizBackground'
+import Widget from '../../components/Widget'
+import QuizLogo from '../../components/QuizLogo'
+import QuizBackground from '../../components/QuizBackground'
 import { useRouter } from 'next/router'
-import { Howl } from 'howler'
-import QuizContainer from '../src/components/QuizContainer'
-import Button from '../src/components/Button'
-import PlayButton from '../src/components/PlayButton'
+import QuizContainer from '../../components/QuizContainer'
+import Button from '../../components/Button'
 import Head from 'next/head'
-import AlternativesForm from '../src/components/AlternativesForm'
-
-let audioClips = [];
+import AlternativesForm from '../../components/AlternativesForm'
 
 function ResultWidget({ results }) {
   const router = useRouter();
@@ -24,7 +19,7 @@ function ResultWidget({ results }) {
       </Widget.Header>
 
       <Widget.Content>
-        <p>{name}, você acertou {results.reduce((somatoria, resultAtual) => {return resultAtual === true ? somatoria + 1 : somatoria}, 0)} músicas de {results.length}</p>
+        <p>Você acertou {results.reduce((somatoria, resultAtual) => {return resultAtual === true ? somatoria + 1 : somatoria}, 0)} perguntas de {results.length}</p>
         <ul>
           {results.map((result, resultIndex) => (
             <li key={`result__${resultIndex}`}>
@@ -69,7 +64,7 @@ function QuestionWidget({
       <Widget.Header>
         {/* <BackLinkArrow href="/" /> */}
         <h3>
-          {`Música ${questionIndex + 1} de ${totalQuestions}`}
+          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
       </Widget.Header>
 
@@ -89,14 +84,6 @@ function QuestionWidget({
         <p>
           {question.description}
         </p>
-        <PlayButton onClick={() => {
-            if(!audioClips[questionIndex].playing()) {
-              audioClips[questionIndex].play()
-            }
-          }
-        }>
-          Play
-        </PlayButton>
         <AlternativesForm
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
@@ -154,7 +141,7 @@ const screenStates = {
   RESULT: 'RESULT',
 };
 
-export default function QuizPage() {
+export default function QuizPage({db}) {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
   const [results, setResults] = React.useState([]);
   const totalQuestions = db.questions.length;
@@ -175,20 +162,6 @@ export default function QuizPage() {
   // morre === willUnmount
   React.useEffect(() => {
     // fetch() ...
-    // load audio clips
-    db.questions.forEach(question => {
-      audioClips = [
-        ...audioClips,
-        new Howl({
-          src: question.sound,
-          html5: true,
-          volume: 0.5,
-          autoplay: false,
-          preload: true,
-        })
-      ];
-    });
-    console.log(audioClips);
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
     }, 1 * 1000);
@@ -221,7 +194,6 @@ export default function QuizPage() {
             totalQuestions={totalQuestions}
             onSubmit={handleSubmitQuiz}
             addResult={addResult}
-            audioClips={audioClips}
           />
         )}
 

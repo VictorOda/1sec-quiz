@@ -15,7 +15,7 @@ import QuizContainer from '../src/components/QuizContainer'
 export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
-
+  console.log('router: ' + JSON.stringify(router));
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
@@ -66,7 +66,7 @@ export default function Home() {
                 const [repoName, user] = prepareUrl.split('.');
                 return (
                   <li key={url}>
-                    <Widget.Topic href={url}>
+                    <Widget.Topic href={`/quiz/${repoName}.${user}?name=${name}`}>
                       {`${user}/${repoName}`}
                     </Widget.Topic>
                   </li>
