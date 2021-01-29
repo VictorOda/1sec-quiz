@@ -1,21 +1,22 @@
-import styled from 'styled-components'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import db from '../db.json';
-import Widget from '../src/components/Widget'
-import QuizLogo from '../src/components/QuizLogo'
-import QuizBackground from '../src/components/QuizBackground'
-import Footer from '../src/components/Footer'
-import GitHubCorner from '../src/components/GitHubCorner'
-import Head from 'next/head'
-import Credits from '../src/components/Credits'
-import Input from '../src/components/Input'
-import Button from '../src/components/Button'
-import QuizContainer from '../src/components/QuizContainer'
+import Widget from '../src/components/Widget';
+import QuizLogo from '../src/components/QuizLogo';
+import QuizBackground from '../src/components/QuizBackground';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
+import Head from 'next/head';
+import Credits from '../src/components/Credits';
+import Input from '../src/components/Input';
+import Button from '../src/components/Button';
+import QuizContainer from '../src/components/QuizContainer';
+import Link from '../src/components/Link';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
-  console.log('router: ' + JSON.stringify(router));
+  
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
@@ -26,7 +27,16 @@ export default function Home() {
       </Head>
       <QuizContainer>
         <QuizLogo />
-        <Widget>
+        <Widget
+          as={motion.section}
+          transition={{ delay: 0, duration: 0.5 }}
+          variants={{
+            show: {opacity: 1, y:'0'},
+            hidden: {opacity: 0, y:'25%'}
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Header>
             <h1>{db.title}</h1>
           </Widget.Header>
@@ -51,7 +61,16 @@ export default function Home() {
           </Widget.Content>
         </Widget>
 
-        <Widget>
+        <Widget
+          as={motion.section}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          variants={{
+            show: {opacity: 1, y:'0'},
+            hidden: {opacity: 0, y:'25%'}
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Content>
             <h1>Quizes da Galera</h1>
 
@@ -66,7 +85,11 @@ export default function Home() {
                 const [repoName, user] = prepareUrl.split('.');
                 return (
                   <li key={url}>
-                    <Widget.Topic href={`/quiz/${repoName}.${user}?name=${name}`}>
+                    <Widget.Topic 
+                      as={Link}
+                      href={`/quiz/${repoName}.${user}?name=${name}`}
+                      disabled={name.length === 0} 
+                    >
                       {`${user}/${repoName}`}
                     </Widget.Topic>
                   </li>
@@ -75,8 +98,26 @@ export default function Home() {
             </ul>
           </Widget.Content>
         </Widget>
-        <Footer />
-        <Credits />
+        <Footer
+          as={motion.footer}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          variants={{
+            show: {opacity: 1, y:'0'},
+            hidden: {opacity: 0, y:'25%'}
+          }}
+          initial="hidden"
+          animate="show"
+        />
+        <Credits 
+          as={motion.footer}
+          transition={{ delay: 0.9, duration: 0.5 }}
+          variants={{
+            show: {opacity: 1, y:'0'},
+            hidden: {opacity: 0, y:'25%'}
+          }}
+          initial="hidden"
+          animate="show"
+        />
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/VictorOda" />
       

@@ -4,11 +4,12 @@ import styled from 'styled-components';
 const PlayButton = styled.button`
   background-color: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.contrastText};
-  border-radius: 20px;
+  border-radius: 50%;
   border: 0;
-  width: 30%;
-  margin: 0 0 10px 0;
-  padding: 10px 16px;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 10px auto;
+  padding: 0 0 0 3px;
   font-weight: bold;
   font-size: 14px;
   line-height: 1;
@@ -16,6 +17,9 @@ const PlayButton = styled.button`
   outline: 0;
   transition: .3s;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     opacity: .5;
   }

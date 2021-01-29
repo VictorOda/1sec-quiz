@@ -64,6 +64,12 @@ Widget.Topic = styled.a`
   &:focus {
     opacity: .5;
   }
+  
+  &:disabled {
+    background-color: #979797;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 `;
 
 export default Widget;

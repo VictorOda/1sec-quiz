@@ -1,15 +1,20 @@
-import React from 'react'
+import React from 'react';
 import db from '../../db.json';
-import Widget from '../../src/components/Widget'
-import QuizLogo from '../../src/components/QuizLogo'
-import QuizBackground from '../../src/components/QuizBackground'
-import { useRouter } from 'next/router'
-import { Howl } from 'howler'
-import QuizContainer from '../../src/components/QuizContainer'
-import Button from '../../src/components/Button'
-import PlayButton from '../../src/components/PlayButton'
-import Head from 'next/head'
-import AlternativesForm from '../../src/components/AlternativesForm'
+import Widget from '../../src/components/Widget';
+import QuizLogo from '../../src/components/QuizLogo';
+import QuizBackground from '../../src/components/QuizBackground';
+import { useRouter } from 'next/router';
+import { Howl } from 'howler';
+import QuizContainer from '../../src/components/QuizContainer';
+import Button from '../../src/components/Button';
+import PlayButton from '../../src/components/PlayButton';
+import Head from 'next/head';
+import AlternativesForm from '../../src/components/AlternativesForm';
+import BackLinkArrow from '../../src/components/BackLinkArrow';
+import Lottie from 'react-lottie';
+import loadingAnim from '../../src/animations/loadingAnim';
+import { BsPlay, BsPlayFill} from 'react-icons/bs'
+import { motion } from 'framer-motion';
 
 let audioClips = [];
 
@@ -18,7 +23,16 @@ function ResultWidget({ results }) {
   const name = router.query.name;
 
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ delay: 0, duration: 0.5 }}
+      variants={{
+        show: {opacity: 1, y:'0'},
+        hidden: {opacity: 0, y:'25%'}
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
         RESULTADOS
       </Widget.Header>
@@ -38,14 +52,27 @@ function ResultWidget({ results }) {
 }
 
 function LoadingWidget() {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingAnim,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
   return (
     <Widget>
       <Widget.Header>
-        Carregando...
+        Carregando quiz...
       </Widget.Header>
 
       <Widget.Content>
-        [Desafio do Loading]
+        <Lottie
+          options={defaultOptions}
+          height={200}
+          width={200}
+        />
       </Widget.Content>
     </Widget>
   );
@@ -63,11 +90,32 @@ function QuestionWidget({
   const questionId = `question__${questionIndex}`;
   const isCorrect = selectedAlternative === question.answer;
   const hasSelectedAlternative = selectedAlternative !== undefined;
- 
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const sound = new Howl({
+    src: question.sound,
+    html5: true,
+    volume: 0.5,
+    autoplay: false,
+    preload: true,
+    onend: () => {
+      console.log('Audio Stopped');
+      setIsPlaying(false);
+    }
+  })
+
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ delay: 0, duration: 0.5 }}
+      variants={{
+        show: {opacity: 1, x:'0'},
+        hidden: {opacity: 0, x:'-25%'}
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
-        {/* <BackLinkArrow href="/" /> */}
+        <BackLinkArrow href="/" />
         <h3>
           {`Música ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
@@ -90,12 +138,15 @@ function QuestionWidget({
           {question.description}
         </p>
         <PlayButton onClick={() => {
-            if(!audioClips[questionIndex].playing()) {
-              audioClips[questionIndex].play()
+            if(!sound.playing()) {
+              console.log('Play Audio');
+              sound.play();
+              setIsPlaying(true);
             }
           }
         }>
-          Play
+          {!isPlaying && <BsPlay size={40} />}
+          {isPlaying && <BsPlayFill size={40} />}
         </PlayButton>
         <AlternativesForm
           onSubmit={(infosDoEvento) => {
@@ -176,22 +227,22 @@ export default function QuizPage() {
   React.useEffect(() => {
     // fetch() ...
     // load audio clips
-    db.questions.forEach(question => {
-      audioClips = [
-        ...audioClips,
-        new Howl({
-          src: question.sound,
-          html5: true,
-          volume: 0.5,
-          autoplay: false,
-          preload: true,
-        })
-      ];
-    });
-    console.log(audioClips);
+    // db.questions.forEach(question => {
+    //   audioClips = [
+    //     ...audioClips,
+    //     new Howl({
+    //       src: question.sound,
+    //       html5: true,
+    //       volume: 0.5,
+    //       autoplay: false,
+    //       preload: true,
+    //     })
+    //   ];
+    // });
+    
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
+    }, 2 * 1000);
   // nasce === didMount
   }, []);
 
