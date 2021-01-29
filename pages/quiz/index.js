@@ -138,7 +138,7 @@ function QuestionWidget({
           {question.description}
         </p>
         <PlayButton onClick={() => {
-            if(!sound.playing()) {
+            if(!isPlaying) {
               console.log('Play Audio');
               sound.play();
               setIsPlaying(true);
