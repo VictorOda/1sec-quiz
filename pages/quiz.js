@@ -89,7 +89,14 @@ function QuestionWidget({
         <p>
           {question.description}
         </p>
-        <PlayButton onClick={() => audioClips[questionIndex].play()}>Play</PlayButton>
+        <PlayButton onClick={() => {
+            if(!audioClips[questionIndex].playing()) {
+              audioClips[questionIndex].play()
+            }
+          }
+        }>
+          Play
+        </PlayButton>
         <AlternativesForm
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
