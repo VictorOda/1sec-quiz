@@ -62,7 +62,16 @@ function LoadingWidget() {
   };
 
   return (
-    <Widget>
+    <Widget
+      as={motion.section}
+      transition={{ delay: 0, duration: 0.5 }}
+      variants={{
+        show: {opacity: 1, y:'0'},
+        hidden: {opacity: 0, y:'25%'}
+      }}
+      initial="hidden"
+      animate="show"
+    >
       <Widget.Header>
         Carregando quiz...
       </Widget.Header>
@@ -108,8 +117,8 @@ function QuestionWidget({
       as={motion.section}
       transition={{ delay: 0, duration: 0.5 }}
       variants={{
-        show: {opacity: 1, x:'0'},
-        hidden: {opacity: 0, x:'-25%'}
+        show: {opacity: 1, y:'0'},
+        hidden: {opacity: 0, y:'25%'}
       }}
       initial="hidden"
       animate="show"
@@ -191,8 +200,8 @@ function QuestionWidget({
             Confirmar
           </Button>
           {/* <p>selectedAlternative: {selectedAlternative}</p> */}
-          {isQuestionSubmitted && isCorrect && <p>Você acertou :)</p>}
-          {isQuestionSubmitted &&!isCorrect && <p>Você errou :(</p>}
+          {isQuestionSubmitted && isCorrect && <span>Você acertou :)</span>}
+          {isQuestionSubmitted &&!isCorrect && <span>Você errou :(</span>}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
