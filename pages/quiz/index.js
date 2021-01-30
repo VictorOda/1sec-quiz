@@ -16,8 +16,6 @@ import loadingAnim from '../../src/animations/loadingAnim';
 import { BsPlay, BsPlayFill} from 'react-icons/bs'
 import { motion } from 'framer-motion';
 
-let audioClips = [];
-
 function ResultWidget({ results }) {
   const router = useRouter();
   const name = router.query.name;
@@ -282,7 +280,6 @@ export default function QuizPage() {
             totalQuestions={totalQuestions}
             onSubmit={handleSubmitQuiz}
             addResult={addResult}
-            audioClips={audioClips}
           />
         )}
 
