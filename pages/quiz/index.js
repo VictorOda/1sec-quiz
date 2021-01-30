@@ -23,7 +23,7 @@ function ResultWidget({ results }) {
   return (
     <Widget
       as={motion.section}
-      transition={{ delay: 0, duration: 0.5 }}
+      transition={{ delay: 0, duration: 0.5, ease: "easeOut" }}
       variants={{
         show: {opacity: 1, y:'0'},
         hidden: {opacity: 0, y:'25%'}
@@ -32,6 +32,7 @@ function ResultWidget({ results }) {
       animate="show"
     >
       <Widget.Header>
+        <BackLinkArrow href="/" />
         RESULTADOS
       </Widget.Header>
 
@@ -62,7 +63,7 @@ function LoadingWidget() {
   return (
     <Widget
       as={motion.section}
-      transition={{ delay: 0, duration: 0.5 }}
+      transition={{ delay: 0, duration: 0.5, ease: "easeOut" }}
       variants={{
         show: {opacity: 1, y:'0'},
         hidden: {opacity: 0, y:'25%'}
@@ -112,7 +113,7 @@ function QuestionWidget({
   return (
     <Widget
       as={motion.section}
-      transition={{ delay: 0, duration: 0.5 }}
+      transition={{ delay: 0, duration: 0.5, ease: "easeOut" }}
       variants={{
         show: {opacity: 1, y:'0'},
         hidden: {opacity: 0, y:'25%'}
@@ -186,7 +187,7 @@ function QuestionWidget({
                 as={motion.label}
                 whileHover={{ 
                   scale: 1.05,
-                  transition: { duration: 0.05}
+                  transition: { duration: 0.05, ease: "easeOut"}
                 }}
               >
                 <input

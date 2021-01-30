@@ -29,7 +29,7 @@ export default function Home() {
         <QuizLogo />
         <Widget
           as={motion.section}
-          transition={{ delay: 0, duration: 0.5 }}
+          transition={{ delay: 0, duration: 0.5, ease: "easeOut" }}
           variants={{
             show: {opacity: 1, y:'0'},
             hidden: {opacity: 0, y:'25%'}
@@ -71,7 +71,7 @@ export default function Home() {
 
         <Widget
           as={motion.section}
-          transition={{ delay: 0.3, duration: 0.2 }}
+          transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
           variants={{
             show: {opacity: 1, y:'0'},
             hidden: {opacity: 0, y:'25%'}
@@ -108,7 +108,7 @@ export default function Home() {
         </Widget>
         <Footer
           as={motion.footer}
-          transition={{ delay: 0.6, duration: 0.5 }}
+          transition={{ delay: 0.6, duration: 0.5, ease: "easeOut" }}
           variants={{
             show: {opacity: 1, y:'0'},
             hidden: {opacity: 0, y:'25%'}
@@ -118,7 +118,7 @@ export default function Home() {
         />
         <Credits 
           as={motion.footer}
-          transition={{ delay: 0.9, duration: 0.5 }}
+          transition={{ delay: 0.9, duration: 0.5, ease: "easeOut" }}
           variants={{
             show: {opacity: 1, y:'0'},
             hidden: {opacity: 0, y:'25%'}
