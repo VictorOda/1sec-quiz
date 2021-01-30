@@ -37,7 +37,15 @@ function ResultWidget({ results }) {
         <BackLinkArrow href="/" />
         RESULTADOS
       </Widget.Header>
-
+      <img
+        alt="GameOver"
+        style={{
+          width: '100%',
+          height: '200px',
+          objectFit: 'cover',
+        }}
+        src={db.resultImage}
+      />
       <Widget.Content>
         <p>{name}, você acertou {results.reduce((somatoria, resultAtual) => {return resultAtual === true ? somatoria + 1 : somatoria}, 0)} músicas de {results.length}!</p>
         <ul>
