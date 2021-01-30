@@ -13,7 +13,7 @@ import AlternativesForm from '../../src/components/AlternativesForm';
 import BackLinkArrow from '../../src/components/BackLinkArrow';
 import Lottie from 'react-lottie';
 import loadingAnim from '../../src/animations/loadingAnim';
-import { BsPlay, BsPlayFill} from 'react-icons/bs'
+import { BsPlay, BsPlayFill} from 'react-icons/bs';
 import { motion } from 'framer-motion';
 
 function ResultWidget({ results }) {
@@ -41,11 +41,28 @@ function ResultWidget({ results }) {
         <ul>
           {results.map((result, resultIndex) => (
             <li key={`result__${resultIndex}`}>
-              #0{resultIndex+1} {db.questions[resultIndex].title} - {result == true ? 'ACERTOU' : 'ERROU'}
+              #0{resultIndex+1} - {db.questions[resultIndex].title} <b>{result == true ? 'ACERTOU' : 'ERROU'}</b>
             </li>
           ))}
         </ul>
+        <form onSubmit={function (infosDoEvento) {
+            // infosDoEvento.preventDefault();
+            router.push(`/`);
+        }}>
+          <Button 
+          type="submit" 
+          disabled={name.length === 0}
+          as={motion.button}
+          whileHover={{ 
+            scale: 1.05,
+            transition: { duration: 0.1}
+          }}
+          >
+          VOLTAR
+          </Button>
+        </form>
       </Widget.Content>
+      
     </Widget>
   );
 }
