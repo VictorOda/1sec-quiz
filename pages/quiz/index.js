@@ -13,6 +13,8 @@ import AlternativesForm from '../../src/components/AlternativesForm';
 import BackLinkArrow from '../../src/components/BackLinkArrow';
 import Lottie from 'react-lottie';
 import loadingAnim from '../../src/animations/loadingAnim';
+import correctAnim from '../../src/animations/correctAnim';
+import incorrectAnim from '../../src/animations/incorrectAnim';
 import { BsPlay, BsPlayFill} from 'react-icons/bs';
 import { motion } from 'framer-motion';
 
@@ -125,7 +127,23 @@ function QuestionWidget({
     onend: () => {
       setIsPlaying(false);
     }
-  })
+  });
+  const defaultOptionsCorrect = {
+    loop: false,
+    autoplay: true,
+    animationData: correctAnim,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+  const defaultOptionsIncorrect = {
+    loop: false,
+    autoplay: true,
+    animationData: incorrectAnim,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
   return (
     <Widget
@@ -223,21 +241,23 @@ function QuestionWidget({
           {/* <pre>
             {JSON.stringify(question, null, 4)}
           </pre> */}
-          <Button 
-            type="submit" 
-            disabled={!hasSelectedAlternative}
-            as={motion.button}
-            whileHover={{ 
-              scale: 1.05,
-              transition: { duration: 0.05}
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Confirmar
-          </Button>
+          {!isQuestionSubmitted &&
+            <Button 
+              type="submit" 
+              disabled={!hasSelectedAlternative}
+              as={motion.button}
+              whileHover={{ 
+                scale: 1.05,
+                transition: { duration: 0.05}
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Confirmar
+            </Button>
+          }
           {/* <p>selectedAlternative: {selectedAlternative}</p> */}
-          {isQuestionSubmitted && isCorrect && <span>Você acertou :)</span>}
-          {isQuestionSubmitted &&!isCorrect && <span>Você errou :(</span>}
+          {isQuestionSubmitted && isCorrect && <Lottie options={defaultOptionsCorrect} height={60} width={60} margin-top="20px" />}
+          {isQuestionSubmitted &&!isCorrect && <Lottie options={defaultOptionsIncorrect} height={60} width={60} margin-top="20px" />}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
