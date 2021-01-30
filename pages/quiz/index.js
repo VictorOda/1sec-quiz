@@ -187,6 +187,7 @@ function QuestionWidget({
                   name={questionId}
                   onChange={() => setSelectedAlternative(alternativeIndex) }
                   type="radio"
+                  disabled={isQuestionSubmitted}
                 />
                 {alternative}
               </Widget.Topic>
