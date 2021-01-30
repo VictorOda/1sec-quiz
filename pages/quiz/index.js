@@ -171,6 +171,7 @@ function QuestionWidget({
             const alternativeId = `alternative__${alternativeIndex}`;
             const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
             const isSelected = selectedAlternative === alternativeIndex;
+            console.log('isSelected: ',isSelected);
             return (
               <Widget.Topic
                 as="label"
@@ -183,7 +184,7 @@ function QuestionWidget({
                   style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
-                  onChange={() => setSelectedAlternative(alternativeIndex) }
+                  onClick={() => setSelectedAlternative(alternativeIndex) }
                   type="radio"
                   disabled={isQuestionSubmitted}
                 />
