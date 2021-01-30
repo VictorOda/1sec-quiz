@@ -105,7 +105,6 @@ function QuestionWidget({
     autoplay: false,
     preload: true,
     onend: () => {
-      console.log('Audio Stopped');
       setIsPlaying(false);
     }
   })
@@ -146,7 +145,6 @@ function QuestionWidget({
         </p>
         <PlayButton onClick={() => {
             if(!isPlaying) {
-              console.log('Play Audio');
               sound.play();
               setIsPlaying(true);
             }
@@ -171,7 +169,7 @@ function QuestionWidget({
             const alternativeId = `alternative__${alternativeIndex}`;
             const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
             const isSelected = selectedAlternative === alternativeIndex;
-            console.log('isSelected: ',isSelected);
+
             return (
               <Widget.Topic
                 as="label"

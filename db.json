@@ -8,7 +8,7 @@
         "image": "https://media.giphy.com/media/JhfcFoCNTuIH6/source.gif",
         "title": "Clássicos da Nintendo",
         "description": "Uma mamão com açúcar pra gente começar",
-        "sound": "http://docs.google.com/uc?export=open&id=16U9pyi6GDk_xZSFf72HFDqnw4piV_QUB",
+        "sound": "/sounds/mario.ogg",
         "answer": 1,
         "alternatives": [
           "Donkey Kong",
@@ -22,7 +22,7 @@
         "image": "https://media.giphy.com/media/ardMfW1w53UvC/giphy.gif",
         "title": "Das antigas",
         "description": "Vai ver você nem tinha nascido ainda",
-        "sound": "http://docs.google.com/uc?export=open&id=13qMtTlo_HkTkGC9e2c7oNWWJ169zVmwt",
+        "sound": "/sounds/tetris.ogg",
         "answer": 3,
         "alternatives": [
           "Pac-Man",
@@ -36,7 +36,7 @@
         "image": "https://media.giphy.com/media/MYBYe5q6kUPD2/source.gif",
         "title": "Clássicos dos anos 90",
         "description": "Quem nunca alugou um desses jogos?",
-        "sound": "http://docs.google.com/uc?export=open&id=16cQ1XwMIva-C2Xd8s9EzhBPkU8S05Tfc",
+        "sound": "/sounds/pokémon.ogg",
         "answer": 4,
         "alternatives": [
           "Sonic",
@@ -50,7 +50,7 @@
         "image": "https://media.giphy.com/media/cWo5UdG06KCHe/giphy.gif",
         "title": "Anos 2000",
         "description": "Muito cuidado para não virar um assassino jogando um desses jogos",
-        "sound": "http://docs.google.com/uc?export=open&id=1Gz52T5YkfJm_xrQiP44A1QQaXPZ9_Jio",
+        "sound": "/sounds/halo.ogg",
         "answer": 2,
         "alternatives": [
           "God of War",
@@ -64,7 +64,7 @@
         "image": "https://media.giphy.com/media/JqEB4KkitGwhPRtC7G/giphy.gif",
         "title": "Jogos de luta",
         "description": "Soquinho, soquinho, soquinho...",
-        "sound": "http://docs.google.com/uc?export=open&id=10kvtuvbIf7euqJuyWhi174qlUZW8LnDg",
+        "sound": "/sounds/smash.ogg",
         "answer": 0,
         "alternatives": [
           "Super Smash Bros",
@@ -78,7 +78,7 @@
         "image": "https://media.giphy.com/media/6Tol8FOHeuaFCHcgek/giphy.gif",
         "title": "Jogos de estratégia",
         "description": "Conceito de estratégia. Em grego: strategia.",
-        "sound": "http://docs.google.com/uc?export=open&id=1fDS4f7RPbIgoxMUU3-uqvhGBxY3aj4dn",
+        "sound": "/sounds/aoe2.ogg",
         "answer": 2,
         "alternatives": [
           "Starcraft",
@@ -92,7 +92,7 @@
         "image": "https://media.giphy.com/media/hqTguNdEoA1ooYxeog/giphy.gif",
         "title": "Jogos Sériões",
         "description": "Pra quem se chama de gamer",
-        "sound": "http://docs.google.com/uc?export=open&id=1VnUdzaC-qoiD-2oo1KHOQ9m1KOJnuyqN",
+        "sound": "/sounds/the-last-of-us.ogg",
         "answer": 1,
         "alternatives": [
           "Red Dead Redemption",
@@ -106,7 +106,7 @@
         "image": "https://media.giphy.com/media/26DoaWaPME4Mk0pXi/giphy.gif",
         "title": "Jogos Indie",
         "description": "Os hispsters do mundo dos games",
-        "sound": "http://docs.google.com/uc?export=open&id=18AKZmHCjjhDQd705_EuNMVS38oqA7hiP",
+        "sound": "/sounds/journey.ogg",
         "answer": 4,
         "alternatives": [
           "Bastion",
