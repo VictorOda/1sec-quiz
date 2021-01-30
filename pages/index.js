@@ -54,7 +54,15 @@ export default function Home() {
                 placeholder="Diz aí seu nome pra jogar :)"
                 value={name}
               />
-              <Button type="submit" disabled={name.length === 0}>
+              <Button 
+                type="submit" 
+                disabled={name.length === 0}
+                as={motion.button}
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.1}
+                }}
+              >
                 JOGAR
               </Button>
             </form>
@@ -63,7 +71,7 @@ export default function Home() {
 
         <Widget
           as={motion.section}
-          transition={{ delay: 0.3, duration: 0.5 }}
+          transition={{ delay: 0.3, duration: 0.2 }}
           variants={{
             show: {opacity: 1, y:'0'},
             hidden: {opacity: 0, y:'25%'}
@@ -85,13 +93,13 @@ export default function Home() {
                 const [repoName, user] = prepareUrl.split('.');
                 return (
                   <li key={url}>
-                    <Widget.Topic 
+                    <Widget.ExternalQuiz 
                       as={Link}
                       href={`/quiz/${repoName}.${user}?name=${name}`}
                       disabled={name.length === 0} 
                     >
                       {`${user}/${repoName}`}
-                    </Widget.Topic>
+                    </Widget.ExternalQuiz>
                   </li>
                 );
               })}

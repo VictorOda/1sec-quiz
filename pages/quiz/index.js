@@ -36,11 +36,11 @@ function ResultWidget({ results }) {
       </Widget.Header>
 
       <Widget.Content>
-        <p>{name}, você acertou {results.reduce((somatoria, resultAtual) => {return resultAtual === true ? somatoria + 1 : somatoria}, 0)} músicas de {results.length}</p>
+        <p>{name}, você acertou {results.reduce((somatoria, resultAtual) => {return resultAtual === true ? somatoria + 1 : somatoria}, 0)} músicas de {results.length}!</p>
         <ul>
           {results.map((result, resultIndex) => (
             <li key={`result__${resultIndex}`}>
-              #0{resultIndex+1} Resultado: {result == true ? 'ACERTOU' : 'ERROU'}
+              #0{resultIndex+1} {db.questions[resultIndex].title} - {result == true ? 'ACERTOU' : 'ERROU'}
             </li>
           ))}
         </ul>
@@ -143,13 +143,20 @@ function QuestionWidget({
         <p>
           {question.description}
         </p>
-        <PlayButton onClick={() => {
+        <PlayButton 
+          onClick={() => {
             if(!isPlaying) {
               sound.play();
               setIsPlaying(true);
             }
-          }
-        }>
+          }}
+          as={motion.button}
+          whileHover={{ 
+            scale: 1.1,
+            transition: { duration: 0.1}
+          }}
+          whileTap={{ scale: 1 }}
+        >
           {!isPlaying && <BsPlay size={40} />}
           {isPlaying && <BsPlayFill size={40} />}
         </PlayButton>
@@ -172,11 +179,15 @@ function QuestionWidget({
 
             return (
               <Widget.Topic
-                as="label"
                 key={alternativeId}
                 htmlFor={alternativeId}
                 data-selected={isSelected}
                 data-status={isQuestionSubmitted && alternativeStatus}
+                as={motion.label}
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.05}
+                }}
               >
                 <input
                   style={{ display: 'none' }}
@@ -194,7 +205,16 @@ function QuestionWidget({
           {/* <pre>
             {JSON.stringify(question, null, 4)}
           </pre> */}
-          <Button type="submit" disabled={!hasSelectedAlternative}>
+          <Button 
+            type="submit" 
+            disabled={!hasSelectedAlternative}
+            as={motion.button}
+            whileHover={{ 
+              scale: 1.05,
+              transition: { duration: 0.05}
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
             Confirmar
           </Button>
           {/* <p>selectedAlternative: {selectedAlternative}</p> */}
